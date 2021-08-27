@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="normalize.css">
+    <style>
+      html {
+        font-size: 16px;
+      }
+      h1 {
+        font-size: 3rem;
+      }
+      .wrapper {
+        font-size: 1.2rem;
+        width: 500px;
+        height: 500px;
+        border: 2px solid black;
+      }
+      .square {
+        background: blue;
+        width: 100vw;
+        height: 50%;
+      }
+
+      @media (min-width: 500px) {
+        .square {
+          background: yellow;
+        }
+      }
+
+      @media (min-width: 800px) {
+        .square {
+          background: red;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        html {
+          font-size: 21px;
+        }
+      }
+    </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Hola Mundo</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas reprehenderit, saepe iure perspiciatis inventore voluptates eligendi praesentium odit perferendis ratione id libero ducimus eum tempora sed, commodi dicta mollitia illo?</p>
+    <div class="square"></div>
+  </div>
+</body>
+</html>
