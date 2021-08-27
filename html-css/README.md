@@ -11,6 +11,7 @@
 * CSS Grids
 * Sass
 * Bootstrap (Grid), MaterialUI, Foundation, Tailwind
+* Semantic HTML
 
 ### Tipos de Fuentes
 
@@ -25,3 +26,7 @@
 * [Reset CSS](https://meyerweb.com/eric/tools/css/reset/)
 * [Normalize CSS](https://necolas.github.io/normalize.css/)
 * https://elementor.com/help/whats-the-difference-between-px-em-rem-vw-and-vh/  
+* [Docs - Sass Language](https://sass-lang.com/)
+* [Game - Flexbox Froggy](https://flexboxfroggy.com/)
+* [Game - CSS Diner](https://flukeout.github.io/)
+* [Game -Flexbox Defense](http://www.flexboxdefense.com/)
