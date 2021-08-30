@@ -30,3 +30,5 @@
 * [Game - Flexbox Froggy](https://flexboxfroggy.com/)
 * [Game - CSS Diner](https://flukeout.github.io/)
 * [Game -Flexbox Defense](http://www.flexboxdefense.com/)
+* [Tailwind](https://tailwindcss.com/)
+* [Tailwind Components](https://tailwindcomponents.com/)
