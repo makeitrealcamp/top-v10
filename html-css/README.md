@@ -32,3 +32,5 @@
 * [Game -Flexbox Defense](http://www.flexboxdefense.com/)
 * [Tailwind](https://tailwindcss.com/)
 * [Tailwind Components](https://tailwindcomponents.com/)
+* [SemVer](https://semver.org/)
+* [CSS Grid Guide](https://css-tricks.com/snippets/css/complete-guide-grid/)
