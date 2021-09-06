@@ -15,3 +15,5 @@
 * [Cómo modelar relaciones](https://docs.mongodb.com/manual/applications/data-models-relationships/)
 * [Diseño avanzado de esquemas](https://www.mongodb.com/presentations/advanced-schema-design-patterns)
 * [Ejemplo MongoDB Node.js driver](https://github.com/germanescobar/mongodb-nodejs-example)
+* [Guía de Mongoose](https://guias.makeitreal.camp/express.js-ii/mongoose)
+* [Ejemplo de autenticación Mongoose](https://github.com/germanescobar/auth-jwt/blob/master/index.js)
