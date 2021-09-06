@@ -11,5 +11,7 @@
 
 ## Recursos
 
+* [Cheat Sheet](https://www.mongodb.com/developer/quickstart/cheat-sheet/)
 * [Cómo modelar relaciones](https://docs.mongodb.com/manual/applications/data-models-relationships/)
 * [Diseño avanzado de esquemas](https://www.mongodb.com/presentations/advanced-schema-design-patterns)
+* [Ejemplo MongoDB Node.js driver](https://github.com/germanescobar/mongodb-nodejs-example)
