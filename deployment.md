@@ -20,3 +20,18 @@ Si tienen problemas se pueden revisar los logs con el comando `heroku logs`.
 
 # Despliegue en Vercel
 
+## Prerequisitos
+
+1. Descargar el [Vercel CLI](https://vercel.com/cli)
+2. Crear una cuenta en Vercel (si todavía no la tienen).
+
+## Instrucciones
+
+1. Utilizar variables de entorno (acordarse de agregarles el prefijo `REACT_APP_`).
+2. Ejecutar `vercel --prod` para configurar y desplegar la aplicación.
+
+Para configurar variables de entorno:
+
+```
+vercel env add BACKEND_URL
+```
