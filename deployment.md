@@ -17,6 +17,7 @@ Después se pueden hacer más commits y nuevos push a Heroku.
 
 Si tienen problemas se pueden revisar los logs con el comando `heroku logs`.
 
+[Guía de Heroku para despliegue de Node.js](https://devcenter.heroku.com/articles/deploying-nodejs)
 
 # Despliegue en Vercel
 
@@ -35,3 +36,5 @@ Para configurar variables de entorno:
 ```
 vercel env add BACKEND_URL
 ```
+
+[Guía despliegue Vercel con Github](https://vercel.com/guides/deploying-react-with-vercel-cra)
