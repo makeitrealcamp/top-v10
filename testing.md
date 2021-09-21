@@ -54,6 +54,8 @@ test('async code (promises)', async function() {
 })
 ```
 
+Para las verificaciones se utilizan **matchers** como `toBe`, `toEqual`, `toBeNull`, etc. Para ver la lista completa [consultar este recurso](https://jestjs.io/docs/using-matchers).
+
 ## Pruebas del backend
 
 Instalar `supertest`:
@@ -76,8 +78,6 @@ describe('GET /test', () => {
 })
 ```
 
-Para las verificaciones se utilizan **matchers** como `toBe`, `toEqual`, `toBeNull`, etc. Para ver la lista completa [consultar este recurso](https://jestjs.io/docs/using-matchers).
-
 ## Pruebas del frontend
 
 Se utiliza una librería llamada [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/). Ya viene instalada en Create React App.
@@ -86,8 +86,7 @@ La idea es renderizar un componente y hacer validaciones sobre el DOM generado. 
 
 1. React Router: cambiar `history.js` para que retorne un **fake** cuando estamos en pruebas.
 2. React Redux: Refactorizar `store.js` para que retorne una función que cree el `store`. Llamar la función desde el `index.js` o desde donde se esté configurando el `Provider` de Redux.
-3. Mockear `axios` con `jest.mock('./axios')`. Esto se puede hacer desde `setupTests.js`.
-4. Crear una `beforeEach` que limpie el localStorage y que cree el store. También se puede hacer desde `setupTests.js`.
+3. Crear una `beforeEach` que limpie el localStorage y que cree el store. Se puede hacer desde `setupTests.js`.
 
 ```js
 let store;
@@ -101,6 +100,27 @@ test('renders register component', () => {
   render(<Provider store={store}><App /></Provider>);
   expect(screen.getByText(/Register/i)).toBeInTheDocument();
 });
+```
+
+Ejemplos completos se pueden encontrar en [este enlace](https://github.com/germanescobar/tasks-frontend/tree/main/src/tests).
+
+Para encontrar elementos en el DOM resultante y verificarlos se puede utilizar el rol (atributo `role`), por el texto del label (para campos de entrada), por el texto del placeholder, por el texto del componente, por el display value (el valor de un campo de entrada), por el atributo `alt`, por el título (atributo `title`) y por un atributo llamado `data-testid`.
+
+**Nota:** React Testing Library (RTL) no recomienda seleccionar por selector CSS. Sin embargo, en mi opinión, eso dificulta la escritura de ciertas pruebas. En [esta pregunta de StackOverflow](https://stackoverflow.com/questions/54234515/get-by-html-element-with-react-testing-library) discuten brevemente el tema.
+
+Para conocer más sobre este tema y la lista de métodos completos [consultar este recurso](https://testing-library.com/docs/queries/about).
+
+### Simular llamados HTTP al backend
+
+Para simular los llamados al backend se puede mockear Axios con Jest o utilizar alguna solución más robusta como [Mock Service Worker]().
+
+Ejemplo con el mock de Axios:
+
+```js
+// ... más imports
+import axios from './axios'
+
+jest.mock('./axios')
 
 test('renders root if authenticated', async () => {
   axios.get.mockResolvedValueOnce({ data: { email: "test@example.com", fistName: "Pedro", lastName: "Perez" } })
@@ -114,15 +134,33 @@ test('renders root if authenticated', async () => {
 
   expect(screen.getByText(/Lista de Tareas/i)).toBeInTheDocument()
 })
+
+test('allows user to login', async () => {
+  axios.post.mockResolvedValueOnce({ data: {
+    token: "jdjdjdjd",
+    user: {
+      email: "test@example.com",
+      fistName: "Pedro",
+      lastName: "Perez"
+    }}
+  });
+
+  history.push('/login')
+
+  render(<Provider store={store}><Login /></Provider>);
+
+  await waitFor(() => screen.getByText(/Login/i))
+  fireEvent.change(screen.getByTestId('email'), { target: { name: "email", value: "test@example.com" }})
+  fireEvent.change(screen.getByTestId('password'), {target: { name: "password", value: "test1234" }})
+
+  const spy = jest.spyOn(history, 'push')
+  fireEvent.submit(screen.getByTestId("form"))
+
+  await waitFor(() => expect(spy).toHaveBeenCalledWith("/"))
+})
 ```
 
-Ejemplos completos se pueden encontrar en [este enlace](https://github.com/germanescobar/tasks-frontend/tree/main/src/tests).
-
-Para encontrar elementos en el DOM resultante y verificarlos se puede utilizar el rol (atributo `role`), por el texto del label (para campos de entrada), por el texto del placeholder, por el texto del componente, por el display value (el valor de un campo de entrada), por el atributo `alt`, por el título (atributo `title`) y por un atributo llamado `data-testid`.
-
-**Nota:** React Testing Library (RTL) no recomienda seleccionar por selector CSS. Sin embargo, en mi opinión, eso dificulta la escritura de ciertas pruebas. En [esta pregunta de StackOverflow](https://stackoverflow.com/questions/54234515/get-by-html-element-with-react-testing-library) discuten brevemente el tema.
-
-Para conocer más sobre este tema y la lista de métodos completos [consultar este recurso](https://testing-library.com/docs/queries/about).
+Para ver todas las opciones que nos ofrece Jest para mocks consultar [este recurso](https://jestjs.io/docs/mock-function-api).
 
 ## Recursos
 
