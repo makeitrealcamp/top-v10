@@ -110,6 +110,8 @@ Para encontrar elementos en el DOM resultante y verificarlos se puede utilizar e
 
 Para conocer más sobre este tema y la lista de métodos completos [consultar este recurso](https://testing-library.com/docs/queries/about).
 
+React Testing Library (RTL) incluye unos **matchers** adicionales para Jest como `toBeDisabled`, `toHaveTextContent`, `toHaveClass`, `toBeChecked`, `toBeInTheDocument`, etc. que puedes encontrar en [este recurso](https://github.com/testing-library/jest-dom).
+
 ### Simular llamados HTTP al backend
 
 Para simular los llamados al backend se puede mockear Axios con Jest o utilizar alguna solución más robusta como [Mock Service Worker]().
@@ -151,7 +153,7 @@ test('allows user to login', async () => {
 
   await waitFor(() => screen.getByText(/Login/i))
   fireEvent.change(screen.getByTestId('email'), { target: { name: "email", value: "test@example.com" }})
-  fireEvent.change(screen.getByTestId('password'), {target: { name: "password", value: "test1234" }})
+  fireEvent.change(screen.getByTestId('password'), { target: { name: "password", value: "test1234" }})
 
   const spy = jest.spyOn(history, 'push')
   fireEvent.submit(screen.getByTestId("form"))
@@ -161,6 +163,22 @@ test('allows user to login', async () => {
 ```
 
 Para ver todas las opciones que nos ofrece Jest para mocks consultar [este recurso](https://jestjs.io/docs/mock-function-api).
+
+### Disparando eventos
+
+Para disparar eventos se utiliza el objeto `fireEvent` de RTL que expone métodos para disparar los eventos como `change`, `click`, `submit`, `focus`, `blur`, `keyPress`, etc. Como primer elemento se le pasa como argumento el elemento sobre el que se quiere disparar el evento. Como segundo argumento se le pasa un **fake** del **evento**.
+
+```js
+
+
+fireEvent.change(screen.getByTestId('email'), { target: { name: "email", value: "test@example.com" }})
+fireEvent.submit(screen.getByTestId("form"))
+fireEvent.click(screen.getByTestId("link"))
+fireEvent.keyDown(screen.getByTestId("text"), { key: 'Enter', code: 'Enter' })
+fireEvent.keyDown(screen.getByTestId("text"), {key: 'A', code: 'KeyA'})
+```
+
+Puedes encontrar todos los códigos de teclas en https://keycode.info/.
 
 ## Recursos
 
