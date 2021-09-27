@@ -11,3 +11,4 @@
 7. CI/CD
     - [Github Actions](CI-CD/githubactions.md)
     - [CircleCI](CI-CD/circleci.md)
+8. [Redux Actions](react/redux-actions.md)
