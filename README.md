@@ -12,3 +12,4 @@
     - [Github Actions](CI-CD/githubactions.md)
     - [CircleCI](CI-CD/circleci.md)
 8. [Redux Actions](react/redux-actions.md)
+9. [Cypress e2e](cypress.md)
