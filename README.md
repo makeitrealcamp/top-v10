@@ -13,3 +13,5 @@
     - [CircleCI](CI-CD/circleci.md)
 8. [Redux Actions](react/redux-actions.md)
 9. [Cypress e2e](cypress.md)
+10. [Sendgrid](sendgrid.md)
+9. [Cloudinary React](cloudinary.md)
